@@ -13,15 +13,21 @@ import Icons from 'src/pages/Icons.vue'
 import Maps from 'src/pages/Maps.vue'
 import Notifications from 'src/pages/Notifications.vue'
 import Upgrade from 'src/pages/Upgrade.vue'
-import Floor from 'src/pages/Floor/Floor.vue'
+import Doctor from 'src/pages/Doctor/Doctor.vue'
+import Admin from 'src/pages/Admin/Admin.vue'
+
 
 
 const routes = [
 
   {
     path: '/',
-    component: DashboardLayout,
-    redirect: '/admin/overview',
+    component: () => import('src/pages/LandingPage.vue'),
+
+  },
+  {
+    path: '/treatment',
+    component: () => import('src/pages/Treatment.vue'),
 
   },
   {
@@ -39,62 +45,104 @@ const routes = [
         component: Overview
       },
       {
-        path: 'floor',
-        name: 'floor',
-        component: Floor
-      },
-      {
-        path: 'category',
-        name: 'category',
-        component: () => import('src/pages/Category/Category.vue'),
+        path: 'konsultasi',
+        name: 'Konsultasi',
+        component: () => import('src/pages/Konsultasi/Konsultasi.vue'),
 
       },
       {
-        path: 'category/add',
-        name: 'add_category',
-        component: () => import('src/pages/Category/Add.vue'),
+        path: 'doctor',
+        name: 'doctor',
+        component: Doctor
+      },
+      {
+        path: 'admin',
+        name: 'admin',
+        component: Admin
+      },
+      {
+        path: 'user',
+        name: 'user',
+        component: () => import('src/pages/User/User.vue'),
 
       },
       {
-        path: 'category/update/:id',
-        name: 'update_category',
-        component: () => import('src/pages/Category/Update.vue'),
+        path: 'gejala',
+        name: 'gejala',
+        component: () => import('src/pages/Gejala/Gejala.vue'),
 
       },
       {
-        path: 'tenant',
-        name: 'tenant',
-        component: () => import('src/pages/Tenant/Tenant.vue'),
+        path: 'penyakit',
+        name: 'penyakit',
+        component: () => import('src/pages/Penyakit/Penyakit.vue'),
 
       },
       {
-        path: 'tenant/add',
-        name: 'add_tenant',
-        component: () => import('src/pages/Tenant/Add.vue'),
+        path: 'rule',
+        name: 'rule',
+        component: () => import('src/pages/Rule/Rule.vue'),
 
       },
       {
-        path: 'tenant/update/:id',
-        name: 'update_tenant',
-        component: () => import('src/pages/Tenant/Update.vue'),
+        path: 'user/add',
+        name: 'add_user',
+        component: () => import('src/pages/User/Add.vue'),
 
       },
       {
-        path: 'event',
-        name: 'event',
-        component: () => import('src/pages/Event/Event.vue'),
+        path: 'user/update/:id',
+        name: 'update_user',
+        component: () => import('src/pages/User/Update.vue'),
 
       },
       {
-        path: 'event/add',
-        name: 'add_event',
-        component: () => import('src/pages/Event/Add.vue'),
+        path: 'gejala/add',
+        name: 'add_gejala',
+        component: () => import('src/pages/Gejala/Add.vue'),
 
       },
       {
-        path: 'event/update/:id',
-        name: 'update_event',
-        component: () => import('src/pages/Event/Update.vue'),
+        path: 'gejala/update/:id',
+        name: 'update_gejala',
+        component: () => import('src/pages/Gejala/Update.vue'),
+
+      },
+      {
+        path: 'penyakit/add',
+        name: 'add_penyakit',
+        component: () => import('src/pages/Penyakit/Add.vue'),
+
+      },
+      {
+        path: 'penyakit/update/:id',
+        name: 'update_penyakit',
+        component: () => import('src/pages/Penyakit/Update.vue'),
+
+      },
+      {
+        path: 'rule/add',
+        name: 'add_rule',
+        component: () => import('src/pages/Rule/Add.vue'),
+
+      },
+      {
+        path: 'rule/update/:id',
+        name: 'update_rule',
+        component: () => import('src/pages/Rule/Update.vue'),
+
+      },
+      {
+        path: 'diagnosa',
+        name: 'diagnosa',
+        component: () => import('src/pages/Diagnosa/Diagnosa.vue'),
+      },
+
+
+      {
+        path: 'profile/update/:id',
+        name: 'update_profile',
+        component: () => import('src/pages/Profile/Update.vue'),
 
       },
       {
@@ -116,15 +164,27 @@ const routes = [
 
       },
       {
-        path: 'floor/add',
-        name: 'add_floor',
-        component: () => import('src/pages/Floor/Add.vue'),
+        path: 'doctor/add',
+        name: 'add_doctor',
+        component: () => import('src/pages/Doctor/Add.vue'),
 
       },
       {
-        path: 'floor/update/:id',
-        name: 'update_floor',
-        component: () => import('src/pages/Floor/Update.vue'),
+        path: 'doctor/update/:id',
+        name: 'update_doctor',
+        component: () => import('src/pages/Doctor/Update.vue'),
+
+      },
+      {
+        path: 'admin/add',
+        name: 'add_admin',
+        component: () => import('src/pages/Admin/Add.vue'),
+
+      },
+      {
+        path: 'admin/update/:id',
+        name: 'update_admin',
+        component: () => import('src/pages/Admin/Update.vue'),
 
       },
       {

@@ -7,14 +7,6 @@
       <div class="collapse navbar-collapse justify-content-end">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <button
-              @click="$router.push({ path: '/admin/user' })"
-              class="btn btn-secondary btn-simple"
-            >
-              Account
-            </button>
-          </li>
-          <li class="nav-item">
             <button @click="handlelogout" class="btn btn-primary">
               Logout
             </button>

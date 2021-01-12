@@ -7,40 +7,51 @@
         <b-col cols="6" md="6" class="my-1">
           <card>
             <div>
-              <h1 class="text-center">Add Floor</h1>
+              <h1 class="text-center">Add User</h1>
               <b-alert :show="showError" variant="danger">{{
                 messageError
               }}</b-alert>
               <b-form @submit="onSubmit">
                 <b-form-group
                   id="input-group-1"
-                  label=" floor Name:"
+                  label="  Name lengkap user:"
                   label-for="input-1"
                 >
                   <b-form-input
-                    id="floor"
-                    v-model="form.name"
+                    id="User"
+                    v-model="form.nama_lengkap"
                     type="text"
                     required
-                    placeholder="floor name ex: GF"
+                    placeholder="User name ex: daniel"
+                  ></b-form-input>
+                </b-form-group>
+                <b-form-group
+                  id="input-group-1"
+                  label=" username:"
+                  label-for="input-1"
+                >
+                  <b-form-input
+                    id="Username"
+                    v-model="form.username"
+                    type="text"
+                    required
+                    placeholder="username yang akan digunakan untuk login"
+                  ></b-form-input>
+                </b-form-group>
+                <b-form-group
+                  id="input-group-1"
+                  label=" password:"
+                  label-for="input-1"
+                >
+                  <b-form-input
+                    id="password"
+                    v-model="form.password"
+                    type="password"
+                    required
+                    placeholder="password yang akan digunakan untuk login"
                   ></b-form-input>
                 </b-form-group>
 
-                <b-form-group
-                  id="input-group-1"
-                  label="Status:"
-                  label-for="input-1"
-                >
-                  <b-form-checkbox
-                    :options="options"
-                    v-model="form.is_active"
-                    switch
-                    size="lg"
-                    >{{
-                      form.is_active ? "Active" : "not active"
-                    }}</b-form-checkbox
-                  >
-                </b-form-group>
                 <b-row class="justify-content-center">
                   <b-col class="text-center">
                     <b-col class="text-center">
@@ -57,9 +68,11 @@
                         >
                       </div>
                       <div v-if="isLoading">
-                        <b-button disabled variant="primary"
-                          >loading...</b-button
-                        >
+                        <b-spinner
+                          variant="primary"
+                          label="Spinning"
+                        ></b-spinner>
+                        <p>loading...</p>
                       </div>
                     </b-col>
                   </b-col>
@@ -74,14 +87,16 @@
 </template>
 
 <script>
-import Floor from "@/api/FloorApi";
+import Doctor from "@/api/DoctorApi";
 
 export default {
   data() {
     return {
       form: {
-        name: "",
-        is_active: false,
+        username: "",
+        nama_lengkap: "",
+        password: "",
+        role: "user",
       },
       isLoading: false,
       options: [],
@@ -96,18 +111,18 @@ export default {
       this.isLoading = true;
       let data = this.form;
       try {
-        let res = await Floor.Add(data);
+        let res = await Doctor.Add(data);
         if (res.data.success) {
           this.success = true;
           this.$notify({
-            message: "success",
+            message: "success add doctor",
             icon: "fa fa-check-circle",
             horizontalAlign: "right",
             verticalAlign: "top",
             type: "success",
           });
           this.$router.push({
-            path: "/admin/floor",
+            path: "/admin/user",
           });
 
           this.isLoading = false;
@@ -115,13 +130,6 @@ export default {
           this.isLoading = false;
           this.showError = true;
           this.messageError = res.data.message;
-          this.$notify({
-            message: res.data.message,
-            icon: "fa fa-check-circle",
-            horizontalAlign: "right",
-            verticalAlign: "top",
-            type: "success",
-          });
         }
       } catch (err) {
         this.isLoading = false;

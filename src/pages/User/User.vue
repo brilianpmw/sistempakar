@@ -41,9 +41,9 @@
           <div class="col-6">
             <button
               class="btn btn-icon btn-primary btn-fill"
-              @click="$router.push({ path: 'Category/add' })"
+              @click="$router.push({ path: 'user/add' })"
             >
-              <i class="nc-icon nc-simple-add"> New Category</i>
+              <i class="nc-icon nc-simple-add"> Add User</i>
             </button>
           </div>
         </div>
@@ -85,8 +85,8 @@
           class="mb-0"
         >
           <b-form-checkbox-group v-model="filterOn" class="mt-1">
-            <b-form-checkbox value="name">Category Name</b-form-checkbox>
-            <b-form-checkbox value="is_active">Active</b-form-checkbox>
+            <b-form-checkbox value="nama_lengkap">user Name</b-form-checkbox>
+            <b-form-checkbox value="username">username</b-form-checkbox>
           </b-form-checkbox-group>
         </b-form-group>
       </b-col>
@@ -116,12 +116,15 @@
             :sort-direction="sortDirection"
             @filtered="onFiltered"
           >
+            <template #cell(index)="row">
+              {{ row.index + 1 }}
+            </template>
             <template #cell(actions)="row">
               <button
                 class="btn btn-icon btn-info mx-1"
                 @click="
                   $router.push({
-                    name: 'update_category',
+                    name: 'update_user',
                     params: { id: row.item._id },
                   })
                 "
@@ -175,11 +178,11 @@
     <b-modal
       @ok="handleOk(infoModal.content)"
       :id="infoModal.id"
-      :title="'Delete ' + infoModal.content._id"
+      :title="'Delete ' + infoModal.title"
       @hide="resetInfoModal"
     >
       <pre>
-are you sure want to delete <strong>{{ infoModal.title }} </strong>from Category list ?</pre>
+are you sure want to delete <strong>{{ infoModal.title }} </strong>from User list ?</pre>
     </b-modal>
   </b-container>
 </template>
@@ -188,7 +191,7 @@ are you sure want to delete <strong>{{ infoModal.title }} </strong>from Category
 import Card from "src/components/Cards/Card.vue";
 import LoadingTable from "src/components/LoadingTable.vue";
 
-import Category from "@/api/CategoryApi";
+import Doctor from "@/api/DoctorApi";
 
 export default {
   components: {
@@ -207,23 +210,21 @@ export default {
       },
 
       fields: [
+        { key: "index", label: "no" },
+
         {
-          key: "name",
-          label: "Category name",
+          key: "username",
+          label: "username",
+          sortable: true,
+          sortDirection: "desc",
+        },
+        {
+          key: "nama_lengkap",
+          label: "nama user",
           sortable: true,
           sortDirection: "desc",
         },
 
-        {
-          key: "is_active",
-          label: "Is Active",
-          formatter: (value, key, item) => {
-            return value ? "Yes" : "No";
-          },
-          sortable: true,
-          sortByFormatted: true,
-          filterByFormatted: true,
-        },
         { key: "actions", label: "Actions" },
       ],
       totalRows: 1,
@@ -258,9 +259,6 @@ export default {
   },
   methods: {
     notifyVue() {
-      const notification = {
-        template: `<span>Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for every web developer.</span>`,
-      };
       this.$notify({
         message: "success",
         icon: "fa fa-check-circle",
@@ -274,7 +272,7 @@ export default {
       this.failed = false;
 
       try {
-        let res = await Category.Delete(id);
+        let res = await Doctor.Delete(id);
         console.log(res);
         if (res.data.success) {
           this.success = true;
@@ -295,8 +293,7 @@ export default {
       alert(`You want to delete row with id: ${row.item._id}`);
     },
     info(item, index, button) {
-      console.log(item);
-      this.infoModal.title = `${item.name}`;
+      this.infoModal.title = `${item.username}`;
       this.infoModal.content = item._id;
       this.$root.$emit("bv::show::modal", this.infoModal.id, button);
     },
@@ -312,7 +309,7 @@ export default {
     async loadStart() {
       try {
         this.isLoading = true;
-        let res = await Category.Get();
+        let res = await Doctor.Get("user");
         this.items = res.data.data;
         this.totalRows = this.items.length;
         this.isLoading = false;

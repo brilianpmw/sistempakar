@@ -1,37 +1,94 @@
 <template>
   <div class="wrapper">
-    <side-bar>
+    <side-bar v-if="role == 'admin'">
       <mobile-menu slot="content"></mobile-menu>
-
       <sidebar-link to="/admin/overview">
         <i class="nc-icon nc-chart-pie-35"></i>
-        <p>Dashboard</p>
+        <p>Beranda</p>
       </sidebar-link>
-      <sidebar-link to="/admin/floor">
-        <i class="nc-icon nc-square-pin"></i>
-        <p>Floor</p>
+      <sidebar-link to="/admin/admin">
+        <i class="nc-icon nc-settings-tool-66"></i>
+        <p>Atur admin</p>
       </sidebar-link>
-      <sidebar-link to="/admin/category">
-        <i class="nc-icon nc-tag-content"></i>
-        <p>Category</p>
+      <sidebar-link to="/admin/doctor">
+        <i class="nc-icon nc-single-02"></i>
+        <p>Atur dokter</p>
       </sidebar-link>
-      <sidebar-link to="/admin/tenant">
-        <i class="nc-icon nc-cart-simple"></i>
-        <p>Tenant</p>
+      <sidebar-link to="/admin/user">
+        <i class="nc-icon nc-satisfied"></i>
+        <p>Atur User</p>
       </sidebar-link>
-      <sidebar-link to="/admin/event">
-        <i class="nc-icon nc-air-baloon"></i>
-        <p>Event & Promotion</p>
+      <sidebar-link to="/admin/diagnosa">
+        <i class="nc-icon nc-ambulance"></i>
+        <p>Riwayat diagnosa</p>
       </sidebar-link>
-      <sidebar-link to="/admin/blog">
-        <i class="nc-icon nc-ruler-pencil"></i>
-        <p>Blog</p>
+      <sidebar-link :to="url">
+        <i class="nc-icon nc-lock-circle-open"></i>
+        <p>edit profile</p>
       </sidebar-link>
+
       <!-- <sidebar-link to="/admin/notifications">
         <i class="nc-icon nc-bell-55"></i>
         <p>Notifications</p>
       </sidebar-link> -->
     </side-bar>
+    <side-bar v-if="role == 'dokter'">
+      <mobile-menu slot="content"></mobile-menu>
+      <sidebar-link to="/admin/overview">
+        <i class="nc-icon nc-chart-pie-35"></i>
+        <p>Beranda</p>
+      </sidebar-link>
+      <sidebar-link to="/admin/gejala">
+        <i class="nc-icon nc-notes"></i>
+        <p>Atur Gejala</p>
+      </sidebar-link>
+      <sidebar-link to="/admin/penyakit">
+        <i class="nc-icon nc-paper-2"></i>
+        <p>Atur Penyakit</p>
+      </sidebar-link>
+      <sidebar-link to="/admin/rule">
+        <i class="nc-icon nc-tag-content"></i>
+        <p>Atur Rule</p>
+      </sidebar-link>
+      <sidebar-link to="/admin/diagnosa">
+        <i class="nc-icon nc-ambulance"></i>
+        <p>Riwayat diagnosa</p>
+      </sidebar-link>
+      <sidebar-link :to="url">
+        <i class="nc-icon nc-lock-circle-open"></i>
+        <p>edit profile</p>
+      </sidebar-link>
+
+      <!-- <sidebar-link to="/admin/notifications">
+        <i class="nc-icon nc-bell-55"></i>
+        <p>Notifications</p>
+      </sidebar-link> -->
+    </side-bar>
+    <side-bar v-if="role == 'user'">
+      <mobile-menu slot="content"></mobile-menu>
+      <sidebar-link to="/admin/overview">
+        <i class="nc-icon nc-chart-pie-35"></i>
+        <p>Beranda</p>
+      </sidebar-link>
+      <sidebar-link to="/admin/konsultasi">
+        <i class="nc-icon nc-notes"></i>
+        <p>Konsultasi</p>
+      </sidebar-link>
+      <sidebar-link to="/admin/diagnosa">
+        <i class="nc-icon nc-ambulance"></i>
+        <p>Riwayat diagnosa</p>
+      </sidebar-link>
+      <sidebar-link :to="url">
+        <i class="nc-icon nc-lock-circle-open"></i>
+        <p>edit profile</p>
+      </sidebar-link>
+
+      <!-- <sidebar-link to="/admin/notifications">
+        <i class="nc-icon nc-bell-55"></i>
+        <p>Notifications</p>
+      </sidebar-link> -->
+    </side-bar>
+
     <div class="main-panel">
       <top-navbar :name="name"></top-navbar>
 
@@ -52,17 +109,24 @@ export default {
   data() {
     return {
       name: "",
+      id: "",
       role: "",
+      url: "",
     };
   },
   created() {
     let token = this.$cookie.get("token");
     let data = JSON.parse(this.$cookie.get("data_user"));
     if (this.$cookie.get("data_user") && this.$cookie.get("token")) {
+      console.log(data.role);
       if (token !== null && data.role == "admin") {
         this.role = "admin";
-      } else if (token !== null && data.role == "super admin") {
-        this.role = "super admin";
+      } else if (token !== null && data.role == "dokter") {
+        this.role = "dokter";
+      } else if (token !== null && data.role == "user") {
+        this.role = "user";
+      } else {
+        this.$router.push({ path: "/login" });
       }
     } else {
       this.$router.push({ path: "/login" });
@@ -79,6 +143,8 @@ export default {
 
       this.$router.push({ path: "/login" });
     }
+    this.url = "/admin/profile/update/" + data._id;
+    this.id = data._id;
     this.name = data.username;
   },
 

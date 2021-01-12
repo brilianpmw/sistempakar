@@ -7,39 +7,64 @@
         <b-col cols="6" md="6" class="my-1">
           <card>
             <div>
-              <h1 class="text-center">update Category</h1>
+              <h1 class="text-center">Add Penyakit</h1>
               <b-alert :show="showError" variant="danger">{{
                 messageError
               }}</b-alert>
               <b-form @submit="onSubmit">
                 <b-form-group
                   id="input-group-1"
-                  label=" Category Name:"
+                  label="  kode Penyakit:"
                   label-for="input-1"
                 >
                   <b-form-input
-                    id="Category"
-                    v-model="form.name"
+                    id="kode"
+                    v-model="form.kode"
                     type="text"
                     required
-                    placeholder="Category name ex: GF"
+                    placeholder="kode Penyakit"
                   ></b-form-input>
                 </b-form-group>
-
                 <b-form-group
                   id="input-group-1"
-                  label="Status:"
+                  label=" nama Penyakit:"
                   label-for="input-1"
                 >
-                  <b-form-checkbox
-                    :options="options"
-                    v-model="form.is_active"
-                    switch
-                    size="lg"
-                    >{{
-                      form.is_active ? "Active" : "not active"
-                    }}</b-form-checkbox
-                  >
+                  <b-form-input
+                    id="nama"
+                    v-model="form.nama"
+                    type="text"
+                    required
+                    placeholder="nama Penyakit"
+                  ></b-form-input>
+                </b-form-group>
+                <b-form-group
+                  id="input-group-1"
+                  label=" nama deskirpsi:"
+                  label-for="textarea"
+                >
+                  <b-form-textarea
+                    id="textarea"
+                    v-model="form.deskripsi"
+                    placeholder="masukan deskripsi"
+                    rows="3"
+                    required
+                    max-rows="6"
+                  ></b-form-textarea>
+                </b-form-group>
+                <b-form-group
+                  id="input-group-1"
+                  label=" nama solusi:"
+                  label-for="textarea"
+                >
+                  <b-form-textarea
+                    id="textarea"
+                    v-model="form.solusi"
+                    placeholder="masukan solusi"
+                    rows="3"
+                    required
+                    max-rows="6"
+                  ></b-form-textarea>
                 </b-form-group>
                 <b-row class="justify-content-center">
                   <b-col class="text-center">
@@ -57,9 +82,11 @@
                         >
                       </div>
                       <div v-if="isLoading">
-                        <b-button disabled variant="primary"
-                          >loading...</b-button
-                        >
+                        <b-spinner
+                          variant="primary"
+                          label="Spinning"
+                        ></b-spinner>
+                        <p>loading...</p>
                       </div>
                     </b-col>
                   </b-col>
@@ -74,14 +101,16 @@
 </template>
 
 <script>
-import Category from "@/api/CategoryApi";
+import Penyakit from "@/api/PenyakitApi";
 
 export default {
   data() {
     return {
       form: {
-        name: "",
-        is_active: false,
+        kode: "",
+        nama: "",
+        deskripsi: "",
+        solusi: "",
       },
       isLoading: false,
       options: [],
@@ -96,19 +125,18 @@ export default {
       this.isLoading = true;
       let data = this.form;
       try {
-        let res = await Category.Update(this.$route.params.id, data);
+        let res = await Penyakit.Add(data);
         if (res.data.success) {
           this.success = true;
           this.$notify({
-            message: "success",
+            message: "success add Penyakit",
             icon: "fa fa-check-circle",
             horizontalAlign: "right",
             verticalAlign: "top",
             type: "success",
           });
           this.$router.push({
-            path: "/admin/Category",
-            query: { add: "success" },
+            path: "/admin/Penyakit",
           });
 
           this.isLoading = false;
@@ -116,13 +144,6 @@ export default {
           this.isLoading = false;
           this.showError = true;
           this.messageError = res.data.message;
-          this.$notify({
-            message: res.data.message,
-            icon: "fa fa-check-circle",
-            horizontalAlign: "right",
-            verticalAlign: "top",
-            type: "success",
-          });
         }
       } catch (err) {
         this.isLoading = false;
@@ -131,15 +152,8 @@ export default {
     },
   },
   async created() {
-    try {
-      this.isLoading = true;
-      let res = await Category.Detail(this.$route.params.id);
-      this.form = res.data.data[0];
-      // this.form.name = "ada";
-      this.isLoading = false;
-    } catch (error) {
-      console.log(error);
-    }
+    // console.log(vendor_data[0]._id);
+    // this.items = res.data.data;
   },
 };
 </script>

@@ -5,7 +5,7 @@
         <b-col md="4" class="text-center">
           <b-card-group deck>
             <b-card
-              header="Gaia admin site"
+              header="Login to use apps"
               header-tag="header"
               footer="Welcome"
               footer-tag="footer"
@@ -26,7 +26,7 @@
                     v-model="form.username"
                     type="text"
                     required
-                    placeholder="Enter email"
+                    placeholder="Enter username"
                   ></b-form-input>
                 </b-form-group>
 
