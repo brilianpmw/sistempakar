@@ -100,7 +100,7 @@ export default {
         if (res.data.success) {
           this.success = true;
           this.$notify({
-            message: "success update doctor",
+            message: "success update Admin",
             icon: "fa fa-check-circle",
             horizontalAlign: "right",
             verticalAlign: "top",

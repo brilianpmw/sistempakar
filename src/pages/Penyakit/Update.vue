@@ -66,8 +66,35 @@
                     max-rows="6"
                   ></b-form-textarea>
                 </b-form-group>
-
+                <b-form-group
+                  id="file"
+                  label="ganti gambar  penyakit :"
+                  label-for="f"
+                >
+                  <b-form-file
+                    @change="onFileChange"
+                    id="file-default"
+                  ></b-form-file>
+                </b-form-group>
+                <div class="row">
+                  <div class="col-12">
+                    <p class="text-center">preview gambar saat ini</p>
+                  </div>
+                </div>
+                <div class="row" v-if="!url">
+                  <div class="col-12">
+                    <p class="text-center">
+                      anda belum mengupload gambar untuk penyakit ini
+                    </p>
+                  </div>
+                </div>
                 <b-row class="justify-content-center">
+                  <div class="bg-dark" id="preview">
+                    <img width="300" height="300" v-if="url" :src="url" />
+                  </div>
+                </b-row>
+
+                <b-row class="justify-content-center mt-5 pb-5">
                   <b-col class="text-center">
                     <b-col class="text-center">
                       <div v-if="!isLoading">
@@ -103,6 +130,7 @@
 
 <script>
 import Penyakit from "@/api/PenyakitApi";
+import UrlActive from "@/api/BaseUrl";
 
 export default {
   data() {
@@ -112,7 +140,9 @@ export default {
         nama: "",
         deskripsi: "",
         solusi: "",
+        file: null,
       },
+      url: null,
       isLoading: false,
       options: [],
       show: true,
@@ -121,10 +151,21 @@ export default {
     };
   },
   methods: {
+    onFileChange(e) {
+      this.url = null;
+      const file = e.target.files[0];
+      this.form.file = file;
+      this.url = URL.createObjectURL(file);
+    },
     async onSubmit(evt) {
       evt.preventDefault();
       this.isLoading = true;
-      let data = this.form;
+      let data = new FormData();
+      data.append("img_disease", this.form.file);
+      data.append("kode", this.form.kode);
+      data.append("nama", this.form.nama);
+      data.append("deskripsi", this.form.deskripsi);
+      data.append("solusi", this.form.solusi);
       try {
         let res = await Penyakit.Update(this.$route.params.id, data);
         if (res.data.success) {
@@ -158,6 +199,9 @@ export default {
       let res = await Penyakit.Detail(this.$route.params.id);
 
       this.form = res.data.data[0];
+      if (res.data.data[0].img_path) {
+        this.url = UrlActive.BaseUrl + "/" + res.data.data[0].img_path;
+      }
 
       // this.form.name = "ada";
       this.isLoading = false;

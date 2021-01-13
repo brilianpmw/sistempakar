@@ -6,7 +6,7 @@
         <img src="@/assets/homepage/asset/logo.png" alt="Kitten" />
       </b-navbar-brand>
       <b-navbar-nav class="ml-auto mr-5">
-        <b-nav-item to="/">Dry Skin</b-nav-item>
+        <b-nav-item to="/dryskin">Dry Skin</b-nav-item>
         <b-nav-item to="/login">Consultation</b-nav-item>
         <b-nav-item to="/treatment">Treatment</b-nav-item>
       </b-navbar-nav>
@@ -369,9 +369,9 @@
         </div>
       </section>
     </b-container>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mt-5 pb-5">
       <div class="col-8">
-        <p>copyright 2021 surface</p>
+        <p class="text-center">copyright 2021 surface</p>
       </div>
     </div>
   </div>

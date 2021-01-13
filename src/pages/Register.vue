@@ -5,11 +5,11 @@
         <b-col md="4" class="text-center">
           <b-card-group deck>
             <b-card
-              header="Consultation Apps"
+              header="Register"
               header-tag="header"
-              footer="Welcome"
+              footer="Register only for  User"
               footer-tag="footer"
-              title="Login account"
+              title="Register account"
             >
               <b-alert
                 v-if="error.length > 0"
@@ -29,30 +29,68 @@
                     placeholder="Enter username"
                   ></b-form-input>
                 </b-form-group>
+                <b-form-group id="input-group-1" label-for="input-1">
+                  <b-form-input
+                    id="input-3"
+                    v-model="form.nama_lengkap"
+                    type="text"
+                    required
+                    placeholder="Enter name"
+                  ></b-form-input>
+                </b-form-group>
 
                 <b-form-group id="input-group-2" label-for="input-2">
                   <b-form-input
                     type="password"
-                    id="input-2"
+                    id="input-4"
                     v-model="form.password"
                     required
                     placeholder="enter password"
                   ></b-form-input>
                 </b-form-group>
+                <b-form-group id="input-group-2" label-for="input-2">
+                  <b-form-input
+                    type="password"
+                    id="input-5"
+                    v-model="form.password2"
+                    required
+                    placeholder="re enter password"
+                  ></b-form-input>
+                </b-form-group>
                 <b-button
                   class="btn-fill"
-                  v-if="!isLoading"
+                  v-if="
+                    !isLoading &&
+                    form.password &&
+                    form.password2 &&
+                    form.password == form.password2
+                  "
                   type="submit"
                   variant="primary"
-                  >Login</b-button
+                  >Register</b-button
+                >
+                <b-button
+                  class="btn-fill"
+                  v-if="
+                    !(
+                      !isLoading &&
+                      form.password &&
+                      form.password2 &&
+                      form.password == form.password2
+                    )
+                  "
+                  disabled
+                  type="submit"
+                  variant="primary"
+                  >Register</b-button
                 >
                 <br />
                 <b-button
                   class="btn-fill mt-3"
                   v-if="!isLoading"
-                  @click="Moveregister"
+                  @click="MoveLogin"
                   variant="secondary"
-                  >Register new user</b-button
+                  >goto Login</b-button
                 >
                 <br />
                 <b-button
@@ -62,6 +100,8 @@
                   variant="info"
                   >Back to main</b-button
                 >
+                <br />
+
                 <b-button
                   v-if="isLoading"
                   class="btn-fill"
@@ -85,7 +125,10 @@ export default {
     return {
       form: {
         username: "",
-        password: "",
+        password: null,
+        nama_lengkap: "",
+        role: "user",
+        password2: null,
       },
       isLoading: false,
       error: [],
@@ -96,36 +139,28 @@ export default {
     Move() {
       this.$router.push({ path: "/" });
     },
-    Moveregister() {
-      this.$router.push({ path: "/register" });
+    MoveLogin() {
+      this.$router.push({ path: "/login" });
     },
     async onSubmit(evt) {
       evt.preventDefault();
       this.error = [];
       this.isLoading = true;
-      let res = await Login.Login({
-        username: this.form.username,
-        password: this.form.password,
-      });
-      if (res.data.token) {
+      let data = this.form;
+      let res = await Login.Register(data);
+      console.log(res.data.data);
+      if (res.data.success) {
         try {
           this.$notify({
-            message: "success login",
+            message: "Register success , please Login",
             icon: "fa fa-check-circle",
             horizontalAlign: "center",
             verticalAlign: "top",
             type: "success",
           });
-          var expired = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
-          let data_user = await this.$jwtDec.decode(res.data.token);
-          this.$cookie.set("token", res.data.token, {
-            expires: expired,
-          });
-          this.$cookie.set("data_user", JSON.stringify(data_user), {
-            expires: expired,
-          });
+
           // this.$router.push({ path: "/product" });
-          this.$router.push({ path: "/admin" });
+          this.$router.push({ path: "/login" });
         } catch (err) {
           console.log(err);
         }
@@ -139,13 +174,6 @@ export default {
       }
     },
   },
-  created() {
-    let token = this.$cookie.get("token");
-    let data = JSON.parse(this.$cookie.get("data_user"));
-
-    if (token !== null && data !== null) {
-      this.$router.push({ path: "/login" });
-    }
-  },
+  created() {},
 };
 </script>

@@ -2,7 +2,6 @@
   <div>
     <b-container fluid>
       <!-- User Interface controls -->
-
       <b-row class="mt-5 justify-content-center">
         <b-col cols="6" md="6" class="my-1">
           <card>

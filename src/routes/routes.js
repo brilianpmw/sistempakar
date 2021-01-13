@@ -30,8 +30,17 @@ const routes = [
 
   },
   {
+    path: '/dryskin',
+    component: () => import('src/pages/DrySkin.vue')
+
+  },
+  {
     path: '/login',
     component: () => import('src/pages/Login.vue'),
+  },
+  {
+    path: '/register',
+    component: () => import('src/pages/Register.vue'),
   },
   {
     path: '/admin',

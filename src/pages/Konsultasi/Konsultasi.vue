@@ -31,20 +31,20 @@
                   <b-row class="justify-content-center">
                     <b-col class="text-center">
                       <b-col v-if="!show" class="text-center">
-                        <div v-if="!isLoading">
-                          <b-button
-                            v-if="form.gejala.length > 0"
-                            type="submit"
-                            variant="primary"
-                            >Submit</b-button
-                          >
-                        </div>
                         <div v-if="isLoading">
                           <b-spinner
                             variant="primary"
                             label="Spinning"
                           ></b-spinner>
                           <p>menganalisa...</p>
+                        </div>
+                        <div v-else>
+                          <b-button
+                            v-if="form.gejala.length > 0"
+                            type="submit"
+                            variant="primary"
+                            >Submit</b-button
+                          >
                         </div>
                       </b-col>
                     </b-col>
@@ -65,6 +65,11 @@
                   <h4 class="text-white text-bold text-center">
                     {{ penyakit.nama }}
                   </h4>
+                  <b-row v-if="url" class="justify-content-center">
+                    <div class="bg-dark" id="preview">
+                      <img width="300" height="300" v-if="url" :src="url" />
+                    </div>
+                  </b-row>
                   <p class="text-center text-white mt-4 mb-4">deskripsi</p>
                   <h6 class="text-white text-bold text-center">
                     {{ penyakit.deskripsi }}
@@ -110,6 +115,7 @@ import StatsCard from "src/components/Cards/StatsCard.vue";
 import LTable from "src/components/Table.vue";
 import Consultation from "@/api/ConsultationApi";
 import Gejala from "@/api/GejalaApi";
+import UrlActive from "@/api/BaseUrl";
 
 export default {
   components: {
@@ -126,6 +132,7 @@ export default {
       found: false,
       selected: [],
       penyakit: {},
+      url: null,
       form: {
         gejala: [],
         id_pengguna: "",
@@ -138,12 +145,16 @@ export default {
     async onSubmit(evt) {
       evt.preventDefault();
       let data = this.form;
+      this.isLoading = true;
       try {
         let res = await Consultation.Process(data);
         if (res.data.success) {
-          console.log(res.data.data);
           if (res.data.data) {
+            this.url = null;
             this.penyakit = res.data.data;
+            if (res.data.data.img_path) {
+              this.url = UrlActive.BaseUrl + "/" + res.data.data.img_path;
+            }
             this.show = true;
             this.found = true;
             this.isLoading = false;

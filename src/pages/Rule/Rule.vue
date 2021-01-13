@@ -228,7 +228,8 @@ export default {
           sortable: true,
           formatter: (value, key, item) => {
             let setdata = item.gejala.map((el) => el.kode);
-            return setdata.toString().replace(",", " - ");
+            let array_data = setdata.toString().replaceAll(",", " - ");
+            return array_data;
           },
           sortDirection: "desc",
           sortByFormatted: true,

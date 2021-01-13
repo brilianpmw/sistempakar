@@ -66,7 +66,27 @@
                     max-rows="6"
                   ></b-form-textarea>
                 </b-form-group>
+                <b-form-group
+                  id="file"
+                  label="Pilih gambar penyakit :"
+                  label-for="f"
+                >
+                  <b-form-file
+                    @change="onFileChange"
+                    id="file-default"
+                  ></b-form-file>
+                </b-form-group>
+                <div class="row" v-if="url">
+                  <div class="col-12">
+                    <p class="text-center">preview gambar</p>
+                  </div>
+                </div>
                 <b-row class="justify-content-center">
+                  <div class="bg-dark" id="preview">
+                    <img width="300" height="300" v-if="url" :src="url" />
+                  </div>
+                </b-row>
+                <b-row class="justify-content-center mt-5">
                   <b-col class="text-center">
                     <b-col class="text-center">
                       <div v-if="!isLoading">
@@ -111,7 +131,10 @@ export default {
         nama: "",
         deskripsi: "",
         solusi: "",
+        file: null,
       },
+      url: null,
+
       isLoading: false,
       options: [],
       show: true,
@@ -120,10 +143,21 @@ export default {
     };
   },
   methods: {
+    onFileChange(e) {
+      const file = e.target.files[0];
+      this.form.file = file;
+      this.url = URL.createObjectURL(file);
+    },
     async onSubmit(evt) {
       evt.preventDefault();
       this.isLoading = true;
-      let data = this.form;
+      let data = new FormData();
+      data.append("img_disease", this.form.file);
+      data.append("kode", this.form.kode);
+      data.append("nama", this.form.nama);
+      data.append("deskripsi", this.form.deskripsi);
+      data.append("solusi", this.form.solusi);
+
       try {
         let res = await Penyakit.Add(data);
         if (res.data.success) {

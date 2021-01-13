@@ -22,7 +22,7 @@
                     v-model="form.nama_lengkap"
                     type="text"
                     required
-                    placeholder="Admin name ex: Dr.boyke"
+                    placeholder="input name"
                   ></b-form-input>
                 </b-form-group>
                 <b-form-group
@@ -108,7 +108,7 @@ export default {
             type: "success",
           });
           this.$router.push({
-            path: "/admin/admin",
+            path: "/admin/overview",
           });
 
           this.isLoading = false;
