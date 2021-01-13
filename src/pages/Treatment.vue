@@ -314,7 +314,7 @@
         <div class="row justify-content-center mt-5">
           <div class="col-3">
             <a
-              href="https://www.laroche-posay.us/face-and-body-skin-care/face-products/face-toner/thermal-spring-water-face-mist-thermalspringwater.html"
+              href="https://www.aveeno.com/products/positively-radiant-skin-brightening-daily-scrub"
               target="_blank"
             >
               <img
@@ -332,7 +332,10 @@
             </div>
           </div>
           <div class="col-3">
-            <a href="https://www.evianspray.com/ " target="_blank">
+            <a
+              href="https://www.clinique.com/product/1682/5003/skincare/exfoliators/7-day-scrub-cream-rinse-off-formula"
+              target="_blank"
+            >
               <img
                 class="img-thumbnail"
                 src="@/assets/homepage/product/14.png"
@@ -348,10 +351,7 @@
             </div>
           </div>
           <div class="col-3">
-            <a
-              href="https://www.vichyusa.com/skin-care/skin-care-product-type/facial-cleanser-toner/vichy-volcanic-water-mineralizingthermalwater.html "
-              target="_blank"
-            >
+            <a href="https://uk.elemis.com/skin-buff.html " target="_blank">
               <img
                 class="img-thumbnail"
                 src="@/assets/homepage/product/15.png"

@@ -118,7 +118,7 @@ export default {
     let data = JSON.parse(this.$cookie.get("data_user"));
 
     if (token !== null && data !== null) {
-      this.$router.push({ path: "/" });
+      this.$router.push({ path: "/login" });
     }
   },
 };

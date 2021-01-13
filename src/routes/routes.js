@@ -1,7 +1,6 @@
 import DashboardLayout from '../layout/DashboardLayout.vue'
 // GeneralViews
 import NotFound from '../pages/NotFoundPage.vue'
-import Login from 'src/pages/Login.vue'
 
 // Admin pages
 import Overview from 'src/pages/Overview.vue'
@@ -22,17 +21,17 @@ const routes = [
 
   {
     path: '/',
-    component: () => import('src/pages/LandingPage.vue'),
+    component: () => import('src/pages/LandingPage.vue')
 
   },
   {
     path: '/treatment',
-    component: () => import('src/pages/Treatment.vue'),
+    component: () => import('src/pages/Treatment.vue')
 
   },
   {
     path: '/login',
-    component: Login,
+    component: () => import('src/pages/Login.vue'),
   },
   {
     path: '/admin',
@@ -48,88 +47,148 @@ const routes = [
         path: 'konsultasi',
         name: 'Konsultasi',
         component: () => import('src/pages/Konsultasi/Konsultasi.vue'),
+        meta: {
+          requiresAuth: true,
+          is_user: true
+        }
 
       },
       {
         path: 'doctor',
         name: 'doctor',
-        component: Doctor
+        component: Doctor,
+        meta: {
+          requiresAuth: true,
+          is_admin: true
+        }
       },
       {
         path: 'admin',
         name: 'admin',
-        component: Admin
+        component: Admin,
+        meta: {
+          requiresAuth: true,
+          is_admin: true
+        }
       },
       {
         path: 'user',
         name: 'user',
         component: () => import('src/pages/User/User.vue'),
+        meta: {
+          requiresAuth: true,
+          is_admin: true
+        }
 
       },
       {
         path: 'gejala',
         name: 'gejala',
         component: () => import('src/pages/Gejala/Gejala.vue'),
+        meta: {
+          requiresAuth: true,
+          is_doctor: true
+        }
 
       },
       {
         path: 'penyakit',
         name: 'penyakit',
         component: () => import('src/pages/Penyakit/Penyakit.vue'),
+        meta: {
+          requiresAuth: true,
+          is_doctor: true
+        }
 
       },
       {
         path: 'rule',
         name: 'rule',
         component: () => import('src/pages/Rule/Rule.vue'),
+        meta: {
+          requiresAuth: true,
+          is_doctor: true
+        }
 
       },
       {
         path: 'user/add',
         name: 'add_user',
         component: () => import('src/pages/User/Add.vue'),
+        meta: {
+          requiresAuth: true,
+          is_admin: true
+        }
 
       },
       {
         path: 'user/update/:id',
         name: 'update_user',
         component: () => import('src/pages/User/Update.vue'),
+        meta: {
+          requiresAuth: true,
+          is_admin: true
+        }
 
       },
       {
         path: 'gejala/add',
         name: 'add_gejala',
         component: () => import('src/pages/Gejala/Add.vue'),
+        meta: {
+          requiresAuth: true,
+          is_doctor: true
+        }
 
       },
       {
         path: 'gejala/update/:id',
         name: 'update_gejala',
         component: () => import('src/pages/Gejala/Update.vue'),
+        meta: {
+          requiresAuth: true,
+          is_doctor: true
+        }
 
       },
       {
         path: 'penyakit/add',
         name: 'add_penyakit',
         component: () => import('src/pages/Penyakit/Add.vue'),
+        meta: {
+          requiresAuth: true,
+          is_doctor: true
+        }
 
       },
       {
         path: 'penyakit/update/:id',
         name: 'update_penyakit',
         component: () => import('src/pages/Penyakit/Update.vue'),
+        meta: {
+          requiresAuth: true,
+          is_doctor: true
+        }
 
       },
       {
         path: 'rule/add',
         name: 'add_rule',
         component: () => import('src/pages/Rule/Add.vue'),
+        meta: {
+          requiresAuth: true,
+          is_doctor: true
+        }
 
       },
       {
         path: 'rule/update/:id',
         name: 'update_rule',
         component: () => import('src/pages/Rule/Update.vue'),
+        meta: {
+          requiresAuth: true,
+          is_doctor: true
+        }
 
       },
       {
@@ -146,82 +205,56 @@ const routes = [
 
       },
       {
-        path: 'blog',
-        name: 'blog',
-        component: () => import('src/pages/Blog/Blog.vue'),
-
-      },
-      {
-        path: 'blog/add',
-        name: 'add_blog',
-        component: () => import('src/pages/Blog/Add.vue'),
-
-      },
-      {
-        path: 'blog/update/:id',
-        name: 'update_blog',
-        component: () => import('src/pages/Blog/Update.vue'),
-
-      },
-      {
         path: 'doctor/add',
         name: 'add_doctor',
         component: () => import('src/pages/Doctor/Add.vue'),
+        meta: {
+          requiresAuth: true,
+          is_admin: true
+        }
 
       },
       {
         path: 'doctor/update/:id',
         name: 'update_doctor',
         component: () => import('src/pages/Doctor/Update.vue'),
+        meta: {
+          requiresAuth: true,
+          is_admin: true
+        }
+
 
       },
       {
         path: 'admin/add',
         name: 'add_admin',
         component: () => import('src/pages/Admin/Add.vue'),
+        meta: {
+          requiresAuth: true,
+          is_admin: true
+        }
+
 
       },
       {
         path: 'admin/update/:id',
         name: 'update_admin',
         component: () => import('src/pages/Admin/Update.vue'),
+        meta: {
+          requiresAuth: true,
+          is_admin: true
+        }
+
 
       },
-      {
-        path: 'user',
-        name: 'User',
-        component: UserProfile
-      },
-      {
-        path: 'table-list',
-        name: 'Table List',
-        component: TableList
-      },
-      {
-        path: 'typography',
-        name: 'Typography',
-        component: Typography
-      },
+
       {
         path: 'icons',
         name: 'Icons',
         component: Icons
       },
-      {
-        path: 'maps',
-        name: 'Maps',
-        component: Maps
-      },
-      {
-        path: 'notifications',
-        name: 'Notifications',
-        component: Notifications
-      },
-      {
-        path: 'upgrade',
-        name: 'Upgrade to PRO',
-        component: Upgrade
-      }
+
+
     ]
   },
   { path: '*', component: NotFound }
