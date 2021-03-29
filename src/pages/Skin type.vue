@@ -6,14 +6,14 @@
         <img src="@/assets/homepage/asset/logo.png" alt="Kitten" />
       </b-navbar-brand>
       <b-navbar-nav class="ml-auto mr-5">
-        <b-nav-item to="/dryskin">Dry Skin</b-nav-item>
+        <b-nav-item to="/skin type">Skin type</b-nav-item>
         <b-nav-item to="/login">Consultation</b-nav-item>
         <b-nav-item to="/treatment">Treatment</b-nav-item>
       </b-navbar-nav>
     </b-navbar>
     <div class="row justify-content-center mt-5">
       <div class="col-4">
-        <h1 class="text-center">Dry Skin</h1>
+        <h1 class="text-center">Skin type (Dry skin)</h1>
       </div>
     </div>
     <div class="row justify-content-center md-5">
