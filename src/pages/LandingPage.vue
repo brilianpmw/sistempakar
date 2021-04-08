@@ -5,20 +5,51 @@
       <b-navbar-brand href="/">
         <img src="@/assets/homepage/asset/logo.png" alt="Kitten" />
       </b-navbar-brand>
-      <b-navbar-nav class="ml-auto mr-5">
-        <b-nav-item to="/">Welcome</b-nav-item>
-        <b-nav-item to="/dryskin">Skin Type</b-nav-item>
-        <b-nav-item to="/login">Consultation</b-nav-item>
-        <b-nav-item to="/treatment">Treatment</b-nav-item>
-        <b-nav-item to="/habbits">Habits</b-nav-item>
-      </b-navbar-nav>
+      <b-navbar-nav class="ml-auto mr-5"> </b-navbar-nav>
     </b-navbar>
-    <div style="padding-bottom: 12vh" class="row justify-content-center">
-      <div class="col-10">
-        <img src="@/assets/homepage/asset/banner.png" alt="banner" />
+    <div class="row">
+      <div class="col-9">
+        <div style="padding-bottom: 12vh" class="row justify-content-center">
+          <div class="col-10">
+            <img
+              src="@/assets/homepage/home/banner2.png"
+              width="1100"
+              height="600"
+              alt="banner"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="col-2" style="margin-left: 100px">
+        <div style="padding-bottom: 12vh" class="row justify-content-center">
+          <div class="col-10">
+            <router-link to="/">
+              <h3 style="color: #ba55d3">Home</h3>
+            </router-link>
+            <router-link to="/welcome">
+              <h3 style="color: #ba55d3">Welcome</h3>
+            </router-link>
+            <router-link to="/dryskin"
+              ><h3 style="color: #ba55d3">Skin Type</h3></router-link
+            >
+            <router-link to="/login"
+              ><h3 style="color: #ba55d3">Consultation</h3></router-link
+            >
+            <router-link to="/treatment"
+              ><h3 style="color: #ba55d3">Treatment</h3></router-link
+            >
+            <router-link to="/habbits"
+              ><h3 style="color: #ba55d3">Habits</h3></router-link
+            >
+            <router-link to="/references"
+              ><h3 style="color: #ba55d3">references</h3></router-link
+            >
+          </div>
+        </div>
       </div>
     </div>
-    <div class="row justify-content-center md-5">
+
+    <!-- <div class="row justify-content-center md-5">
       <div class="col-10 text-center">
         <p style="text-align: justify; text-justify: newspaper">
           Hi there! Welcome. This site is made in 2020 to help anyone who
@@ -56,7 +87,7 @@
           Surface.
         </p>
       </div>
-    </div>
+    </div> -->
     <div class="row justify-content-center mt-5 pb-5">
       <div class="col-8">
         <p class="text-center">copyright 2021 surface</p>

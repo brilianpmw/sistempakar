@@ -91,12 +91,12 @@
         </div>
         <div v-else class="col-8">
           <div class="card bg-secondary mb-3">
-            <div class="card-header text-center">Penyakit tidak ditemukan</div>
+            <div class="card-header text-center">OOps,Disease not found</div>
             <div class="card-body">
               <div class="row justify-content-center">
                 <div class="col-8">
                   <h6 class="text-black text-bold text-center">
-                    penyakit tidak di temukan dengan gejala ini
+                    disease not found for this symptom
                   </h6>
                 </div>
               </div>
