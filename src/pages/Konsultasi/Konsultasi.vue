@@ -57,12 +57,12 @@
       </div>
       <div v-if="show" class="row justify-content-center">
         <div v-if="found" class="col-8">
-          <div class="card bg-info mb-3">
-            <div class="card-header text-center">Hasil analisa</div>
+          <div style="background-color: #d9d9d9" class="card mb-3">
+            <div class="card-header text-black text-center">Result</div>
             <div class="card-body">
               <div class="row justify-content-center">
                 <div class="col-8">
-                  <h4 class="text-white text-bold text-center">
+                  <h4 class="text-black text-bold text-center">
                     {{ penyakit.nama }}
                   </h4>
                   <b-row v-if="url" class="justify-content-center">
@@ -70,15 +70,20 @@
                       <img width="300" height="300" v-if="url" :src="url" />
                     </div>
                   </b-row>
-                  <p class="text-center text-white mt-4 mb-4">deskripsi</p>
-                  <h6 class="text-white text-bold text-center">
+                  <h3 class="text-center text-bold text-black mt-4 mb-4">
+                    Description
+                  </h3>
+                  <p class="text-black text-bold text-center">
                     {{ penyakit.deskripsi }}
-                  </h6>
-                  <p class="text-center text-white mt-4 mb-4">solusi</p>
+                  </p>
+                  <h3 class="text-center text-black mt-4 mb-4">Solution</h3>
 
-                  <h6 class="text-white text-bold text-center">
+                  <p
+                    style="white-space: pre-line; text-align: left"
+                    class="text-black text-bold"
+                  >
                     {{ penyakit.solusi }}
-                  </h6>
+                  </p>
                 </div>
               </div>
             </div>
@@ -90,7 +95,7 @@
             <div class="card-body">
               <div class="row justify-content-center">
                 <div class="col-8">
-                  <h6 class="text-white text-bold text-center">
+                  <h6 class="text-black text-bold text-center">
                     penyakit tidak di temukan dengan gejala ini
                   </h6>
                 </div>
@@ -102,7 +107,7 @@
       <div class="row">
         <b-col class="text-center mt-5">
           <div v-if="show">
-            <b-button @click="clear" variant="primary">cek lagi</b-button>
+            <b-button @click="clear" variant="primary">re check</b-button>
           </div>
         </b-col>
       </div>
@@ -153,7 +158,7 @@ export default {
             this.url = null;
             this.penyakit = res.data.data;
             if (res.data.data.img_path) {
-              this.url = UrlActive.BaseUrl + "/" + res.data.data.img_path;
+              this.url = res.data.data.img_path;
             }
             this.show = true;
             this.found = true;

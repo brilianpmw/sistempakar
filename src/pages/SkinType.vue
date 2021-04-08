@@ -1,14 +1,16 @@
 
 <template>
   <div style="background-color: #f8f9f4">
-    <b-navbar variant="faded" style="background-color: #f8f9f4">
+    <b-navbar variant="faded" style="background-color: #f8f9f4; border: none">
       <b-navbar-brand href="/">
         <img src="@/assets/homepage/asset/logo.png" alt="Kitten" />
       </b-navbar-brand>
       <b-navbar-nav class="ml-auto mr-5">
-        <b-nav-item to="/skin type">Skin type</b-nav-item>
+        <b-nav-item to="/">Welcome</b-nav-item>
+        <b-nav-item to="/dryskin">Skin Type</b-nav-item>
         <b-nav-item to="/login">Consultation</b-nav-item>
         <b-nav-item to="/treatment">Treatment</b-nav-item>
+        <b-nav-item to="/habbits">Habits</b-nav-item>
       </b-navbar-nav>
     </b-navbar>
     <div class="row justify-content-center mt-5">

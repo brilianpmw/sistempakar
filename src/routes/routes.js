@@ -31,7 +31,12 @@ const routes = [
   },
   {
     path: '/dryskin',
-    component: () => import('src/pages/DrySkin.vue')
+    component: () => import('src/pages/SkinType.vue')
+
+  },
+  {
+    path: '/habbits',
+    component: () => import('src/pages/DailyHabbits.vue')
 
   },
   {

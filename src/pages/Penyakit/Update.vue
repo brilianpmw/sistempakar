@@ -200,7 +200,7 @@ export default {
 
       this.form = res.data.data[0];
       if (res.data.data[0].img_path) {
-        this.url = UrlActive.BaseUrl + "/" + res.data.data[0].img_path;
+        this.url = res.data.data[0].img_path;
       }
 
       // this.form.name = "ada";
