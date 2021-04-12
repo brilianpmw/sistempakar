@@ -8,7 +8,7 @@
               <i class="nc-icon nc-single-02 text-primary"></i>
             </div>
             <div slot="content">
-              <p class="card-category">Dokter</p>
+              <p class="card-category">Doctor</p>
               <div class="card-title" v-if="isLoading">
                 <b-spinner
                   variant="primary"
@@ -30,7 +30,7 @@
               <i class="nc-icon nc-tag-content text-danger"></i>
             </div>
             <div slot="content">
-              <p class="card-category">Penyakit</p>
+              <p class="card-category">Disease</p>
               <div class="card-title" v-if="isLoading">
                 <b-spinner
                   variant="danger"
@@ -52,7 +52,7 @@
               <i class="nc-icon nc-puzzle-10 text-warning"></i>
             </div>
             <div slot="content">
-              <p class="card-category">Gejala</p>
+              <p class="card-category">Symptom</p>
               <div class="card-title" v-if="isLoading">
                 <b-spinner
                   variant="warning"
@@ -94,16 +94,12 @@
         <div class="col-12 text-center">
           <div>
             <b-card
-              title="Sistem Pakar diagnosa penyakit Kulit"
-              img-src="https://jeda.id/files/2019/08/kulit-kering-1200x900.jpg"
+              img-src="https://firebasestorage.googleapis.com/v0/b/sistem-pakar-5253d.appspot.com/o/WhatsApp%20Image%202021-01-22%20at%203.11.13%20AM.jpeg?alt=media&token=66632b49-4bbf-4eee-8a11-374c86b27a1a"
               img-alt="Image"
               img-bottom
               class="mb-2"
             >
-              <b-card-text>
-                sistem pakar adalah cabang dari ilmu kecerdasan buatan dimana
-                kali ini akan dimanfaatkan untuk mendiagnosa penyakit kulit
-              </b-card-text>
+              
             </b-card>
           </div>
         </div>

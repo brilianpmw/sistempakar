@@ -220,7 +220,7 @@ export default {
         },
         {
           key: "nama_lengkap",
-          label: "nama dokter",
+          label: "doctor name",
           sortable: true,
           sortDirection: "desc",
         },

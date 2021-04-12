@@ -34,6 +34,11 @@ const routes = [
     component: () => import('src/pages/SkinType.vue')
 
   },
+   {
+    path: '/references',
+    component: () => import('src/pages/References.vue')
+
+  },
   {
     path: '/habbits',
     component: () => import('src/pages/DailyHabbits.vue')

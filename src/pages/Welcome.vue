@@ -5,12 +5,14 @@
         <img src="@/assets/homepage/asset/logo.png" alt="Kitten" />
       </b-navbar-brand>
       <b-navbar-nav class="ml-auto mr-5">
-        <b-nav-item to="/">Home</b-nav-item>
-        <b-nav-item to="/dryskin">skin type</b-nav-item>
-        <b-nav-item to="/welcome">welcome</b-nav-item>
+         <b-nav-item to="/">Home</b-nav-item>
+        <b-nav-item to="/dryskin">Skin type</b-nav-item>
+        <b-nav-item to="/welcome">Welcome</b-nav-item>
         <b-nav-item to="/login">Consultation</b-nav-item>
-        <b-nav-item to="/habbits">habbits</b-nav-item>
+        <b-nav-item to="/habbits">Habit</b-nav-item>
         <b-nav-item to="/treatment">Treatment</b-nav-item>
+                <b-nav-item to="/references">References</b-nav-item>
+
       </b-navbar-nav>
     </b-navbar>
 

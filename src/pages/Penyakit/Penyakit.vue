@@ -43,7 +43,7 @@
               class="btn btn-icon btn-primary btn-fill"
               @click="$router.push({ path: 'penyakit/add' })"
             >
-              <i class="nc-icon nc-simple-add"> Add penyakit</i>
+              <i class="nc-icon nc-simple-add"> Add disease</i>
             </button>
           </div>
         </div>
@@ -85,8 +85,8 @@
           class="mb-0"
         >
           <b-form-checkbox-group v-model="filterOn" class="mt-1">
-            <b-form-checkbox value="kode">kode</b-form-checkbox>
-            <b-form-checkbox value="nama">nama penyakit</b-form-checkbox>
+            <b-form-checkbox value="kode">code</b-form-checkbox>
+            <b-form-checkbox value="nama">disease name</b-form-checkbox>
           </b-form-checkbox-group>
         </b-form-group>
       </b-col>
@@ -214,13 +214,13 @@ export default {
 
         {
           key: "kode",
-          label: "kode penyakit",
+          label: "disease code",
           sortable: true,
           sortDirection: "desc",
         },
         {
           key: "nama",
-          label: "nama penyakit",
+          label: "disease name",
           sortable: true,
           sortDirection: "desc",
         },

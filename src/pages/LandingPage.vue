@@ -13,7 +13,7 @@
           <div class="col-10">
             <img
               src="@/assets/homepage/home/banner2.png"
-              width="1100"
+              width="1000"
               height="600"
               alt="banner"
             />
@@ -39,10 +39,10 @@
               ><h3 style="color: #ba55d3">Treatment</h3></router-link
             >
             <router-link to="/habbits"
-              ><h3 style="color: #ba55d3">Habits</h3></router-link
+              ><h3 style="color: #ba55d3">Habit</h3></router-link
             >
             <router-link to="/references"
-              ><h3 style="color: #ba55d3">references</h3></router-link
+              ><h3 style="color: #ba55d3">References</h3></router-link
             >
           </div>
         </div>

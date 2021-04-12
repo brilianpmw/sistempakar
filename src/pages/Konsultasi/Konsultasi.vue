@@ -5,7 +5,7 @@
         <div class="col-8">
           <div>
             <b-card no-body class="text-center pt-2 pb-2">
-              <div class="">pilih gejala yang dirasakan</div>
+              <div class="">please choose symptom what you have</div>
             </b-card>
           </div>
         </div>
@@ -17,7 +17,7 @@
               <div class="ml-4">
                 <b-form @submit="onSubmit">
                   <b-form-group
-                    label="daftar gejala"
+                    label="Symptom List"
                     v-slot="{ ariaDescribedby }"
                   >
                     <b-form-checkbox-group

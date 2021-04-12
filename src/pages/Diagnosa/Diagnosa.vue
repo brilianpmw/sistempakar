@@ -73,8 +73,8 @@
           class="mb-0"
         >
           <b-form-checkbox-group v-model="filterOn" class="mt-1">
-            <b-form-checkbox value="np">nama penyakit</b-form-checkbox>
-            <b-form-checkbox value="npasien">nama pasien</b-form-checkbox>
+            <b-form-checkbox value="np">disease name</b-form-checkbox>
+            <b-form-checkbox value="npasien">patient name</b-form-checkbox>
           </b-form-checkbox-group>
         </b-form-group>
       </b-col>
@@ -202,7 +202,7 @@ export default {
         },
         {
           key: "np",
-          label: "nama penyakit",
+          label: "disease name",
           sortable: true,
           formatter: (value, key, item) => {
             return item.id_penyakit.nama;
@@ -213,7 +213,7 @@ export default {
         },
         {
           key: "npasien",
-          label: "nama pengguna",
+          label: "patient name",
           sortable: true,
           formatter: (value, key, item) => {
             return item.id_pengguna.nama_lengkap;
@@ -224,7 +224,7 @@ export default {
         },
         {
           key: "tanggal",
-          label: "tanggal",
+          label: "date",
           sortable: true,
           formatter: (value, key, item) => {
             return item.created_at.split("T")[0];

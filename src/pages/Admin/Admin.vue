@@ -220,7 +220,7 @@ export default {
         },
         {
           key: "nama_lengkap",
-          label: "nama admin",
+          label: "admin name",
           sortable: true,
           sortDirection: "desc",
         },

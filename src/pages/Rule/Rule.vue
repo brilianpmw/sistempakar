@@ -85,7 +85,7 @@
           class="mb-0"
         >
           <b-form-checkbox-group v-model="filterOn" class="mt-1">
-            <b-form-checkbox value="penyakit">nama penyakit</b-form-checkbox>
+            <b-form-checkbox value="penyakit">Disease name</b-form-checkbox>
           </b-form-checkbox-group>
         </b-form-group>
       </b-col>
@@ -213,7 +213,7 @@ export default {
 
         {
           key: "penyakit",
-          label: "nama penyakit",
+          label: "disease name",
           sortable: true,
           formatter: (value, key, item) => {
             return item.id_penyakit.nama;

@@ -4,23 +4,23 @@
       <mobile-menu slot="content"></mobile-menu>
       <sidebar-link to="/admin/overview">
         <i class="nc-icon nc-chart-pie-35"></i>
-        <p>Beranda</p>
+        <p>Home</p>
       </sidebar-link>
       <sidebar-link to="/admin/admin">
         <i class="nc-icon nc-settings-tool-66"></i>
-        <p>Atur admin</p>
+        <p>Setting admin</p>
       </sidebar-link>
       <sidebar-link to="/admin/doctor">
         <i class="nc-icon nc-single-02"></i>
-        <p>Atur dokter</p>
+        <p>Setting doctor</p>
       </sidebar-link>
       <sidebar-link to="/admin/user">
         <i class="nc-icon nc-satisfied"></i>
-        <p>Atur User</p>
+        <p>Setting User</p>
       </sidebar-link>
       <sidebar-link to="/admin/diagnosa">
         <i class="nc-icon nc-ambulance"></i>
-        <p>Riwayat diagnosa</p>
+        <p>history of diagnosis</p>
       </sidebar-link>
       <sidebar-link :to="url">
         <i class="nc-icon nc-lock-circle-open"></i>
@@ -36,23 +36,23 @@
       <mobile-menu slot="content"></mobile-menu>
       <sidebar-link to="/admin/overview">
         <i class="nc-icon nc-chart-pie-35"></i>
-        <p>Beranda</p>
+        <p>Home</p>
       </sidebar-link>
       <sidebar-link to="/admin/gejala">
         <i class="nc-icon nc-notes"></i>
-        <p>Atur Gejala</p>
+        <p>Setting Symptom</p>
       </sidebar-link>
       <sidebar-link to="/admin/penyakit">
         <i class="nc-icon nc-paper-2"></i>
-        <p>Atur Penyakit</p>
+        <p>Setting Disease</p>
       </sidebar-link>
       <sidebar-link to="/admin/rule">
         <i class="nc-icon nc-tag-content"></i>
-        <p>Atur Rule</p>
+        <p>Setting Rule</p>
       </sidebar-link>
       <sidebar-link to="/admin/diagnosa">
         <i class="nc-icon nc-ambulance"></i>
-        <p>Riwayat diagnosa</p>
+        <p>history of diagnosis</p>
       </sidebar-link>
       <sidebar-link :to="url">
         <i class="nc-icon nc-lock-circle-open"></i>
@@ -68,15 +68,15 @@
       <mobile-menu slot="content"></mobile-menu>
       <sidebar-link to="/admin/overview">
         <i class="nc-icon nc-chart-pie-35"></i>
-        <p>Beranda</p>
+        <p>Home</p>
       </sidebar-link>
       <sidebar-link to="/admin/konsultasi">
         <i class="nc-icon nc-notes"></i>
-        <p>Konsultasi</p>
+        <p>Consultation</p>
       </sidebar-link>
       <sidebar-link to="/admin/diagnosa">
         <i class="nc-icon nc-ambulance"></i>
-        <p>Riwayat diagnosa</p>
+        <p>history of diagnosis</p>
       </sidebar-link>
       <sidebar-link :to="url">
         <i class="nc-icon nc-lock-circle-open"></i>
